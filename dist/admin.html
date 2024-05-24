@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jatte Admin</title>
+   <link rel="stylesheet" href="../src/output.css">
+  <style>
+    body {
+      padding-top: 80px; 
+    }
+  </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-[#DA314D] text-white fixed top-0 left-0 right-0 z-50 rounded-lg mx-4 mt-4">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <div class="text-lg font-bold">Jatte</div>
+      <nav class="hidden md:flex items-center">
+        <div class="flex space-x-2">
+          <a href="#" class="hover:underline">Home</a>
+          <a href="#" class="hover:underline">About</a>
+        </div>
+        <a href="#" class="bg-red-700 px-4 py-2 ml-4 rounded-md hover:bg-red-800">Chat Admin</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="menu-button" class="focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="dropdown-menu" class="hidden absolute right-4 top-16 bg-[#DA314D] text-white rounded-lg shadow-lg z-50">
+      <a href="#" class="block px-4 py-2 hover:bg-red-700">Home</a>
+      <a href="#" class="block px-4 py-2 hover:bg-red-700">About</a>
+      <a href="#" class="block px-4 py-2 hover:bg-red-700">Chat Admin</a>
+    </div>
+  </header>
+  <div class="ml-8">
+    <h1 class="text-2xl font-bold mb-4 mt-10">Admin</h1>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto flex-grow p-4 md:p-6">
+    <div id="adminSection" class="text-left">
+
+      <!--user-->
+      <div>
+        <h2 class="text-xl font-semibold ">Users</h2><br>
+        <button id="addUserBtn" class="bg-[#DA314D] text-white px-4 py-2 rounded-md mb-4 hover:bg-red-700">Add user</button>
+      </div>
+      <div class="mb-6 overflow-x-auto">
+        
+        <div class="table-container">
+          <table class="min-w-full divide-y divide-gray-200">
+            <tbody>
+              <tr class="border-b">
+                <td class="px-6 py-4">Admin Manager</td>
+                <td class="px-6 py-4">admin@jatte.com</td>
+                <td class="px-6 py-4">Manager</td>
+                <td class="px-6 py-4">
+                  <button class="text-blue-600 hover:underline" onclick="scrollToEdit(this)">Edit</button>
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-6 py-4">John Doe</td>
+                <td class="px-6 py-4">johndoe@jatte.com</td>
+                <td class="px-6 py-4">Agent</td>
+                <td class="px-6 py-4">
+                  <button class="text-blue-600 hover:underline" onclick="scrollToEdit(this)">Edit</button>
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-6 py-4">Stein Ove</td>
+                <td class="px-6 py-4">stein@jatte.com</td>
+                <td class="px-6 py-4">Agent</td>
+                <td class="px-6 py-4">
+                  <button class="text-blue-600 hover:underline" onclick="scrollToEdit(this)">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Rooms Section -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Rooms</h2>
+        <p>There are currently no rooms!</p>
+      </div>
+    </div>
+
+    <!-- Add User Section -->
+    <div id="addUserSection" class="hidden text-left">
+      <h1 class="text-2xl font-bold mb-4">Add User</h1>
+      <form id="addUserForm" class="space-y-4">
+        <div>
+          <label for="username" class="block text-gray-700">Username</label>
+          <input type="text" id="username" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div>
+          <label for="firstname" class="block text-gray-700">First Name</label>
+          <input type="text" id="firstname" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div>
+          <label for="email" class="block text-gray-700">Email</label>
+          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div>
+          <label for="role" class="block text-gray-700">Role</label>
+          <select id="role" class="w-full p-2 border border-gray-300 rounded" required>
+            <option value="Manager">Manager</option>
+            <option value="Agent">Agent</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Submit</button>
+          <button type="button" id="cancelAddUserBtn" class="ml-2 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuButton = document.getElementById('menu-button');
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      const adminSection = document.getElementById('adminSection');
+      const addUserSection = document.getElementById('addUserSection');
+      const addUserBtn = document.getElementById('addUserBtn');
+      const cancelAddUserBtn = document.getElementById('cancelAddUserBtn');
+      const addUserForm = document.getElementById('addUserForm');
+
+      menuButton.addEventListener('click', function () {
+        dropdownMenu.classList.toggle('show');
+      });
+
+      addUserBtn.addEventListener('click', function () {
+        adminSection.style.display = 'none';
+        addUserSection.style.display = 'block';
+      });
+
+      cancelAddUserBtn.addEventListener('click', function () {
+        addUserSection.style.display = 'none';
+        adminSection.style.display = 'block';
+      });
+
+      addUserForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const firstname = document.getElementById('firstname').value;
+        const email = document.getElementById('email').value;
+        const role = document.getElementById('role').value;
+        alert(`User added: ${username}, ${firstname}, ${email}, ${role}`);
+        addUserSection.style.display = 'none';
+        adminSection.style.display = 'block';
+      });
+    });
+
+    function scrollToEdit(button) {
+      const container = button.closest('.table-container');
+      const offsetLeft = button.offsetLeft;
+      container.scrollLeft = offsetLeft - container.clientWidth + button.clientWidth;
+    }
+    document.getElementById('menu-button').addEventListener('click', function () {
+      var menu = document.getElementById('dropdown-menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
+    
+  </script>
+</body>
+</html>
