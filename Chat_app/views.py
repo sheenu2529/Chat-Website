@@ -21,6 +21,16 @@ from .models import Room, Message
 from Chat_app_2.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 from rest_framework import generics, permissions
+from .models import AdminandAgent
+from .serializers import AdminandAgentSerializer
+
+
+
+# Prasanth Senthilvel changes start
+class AdminandAgentView(generics.CreateAPIView):
+    queryset = AdminandAgent.objects.all()
+    serializer_class = AdminandAgentSerializer
+# Prasanth Senthilvel changes end
 
 
 class MessageListCreate(generics.ListCreateAPIView):
