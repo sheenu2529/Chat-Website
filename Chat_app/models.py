@@ -2,6 +2,23 @@ from django.db import models
 from Chat_app_2.models import User
 
 class Message(models.Model):
+    # Prasanth Senthilvel code changes start
+    # Create model for Admin and Agent creation
+    class AdminandAgent(models.Model):
+    ROLE_CHOICES = (
+        ('admin', 'Admin'),
+        ('agent', 'Agent'),
+    )
+    email = models.EmailField(unique=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    role = models.CharField(max_length=5, choices=ROLE_CHOICES)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} ({self.role})"
+    
+    
+    #Prasanth Senthilvel code changes end
     body = models.TextField()
     sent_by = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)

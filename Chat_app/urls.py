@@ -12,4 +12,5 @@ urlpatterns = [
     path('api/create-room/<str:uuid>/', views.create_room, name='create-room'),
     path('chat-admin/', views. admin, name='admin'),
     path('chat-admin/<str:uuid>/', views.room, name='room'),
+    path('add/', AdminandAgentView.as_view(), name='add-user'), # add Prasanth Senthilvel
 ]
