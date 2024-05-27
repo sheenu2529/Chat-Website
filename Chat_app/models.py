@@ -20,11 +20,11 @@ class AdminandAgent(models.Model):
 
     # Prasanth Senthilvel code changes end
 
-@staticmethod
-def search(query):
-    return AdminandAgent.objects.filter(
-        models.Q(first_name__icontains=query) | models.Q(last_name__icontains=query)
-    )
+    @staticmethod
+    def search(query):
+        return AdminandAgent.objects.filter(
+            models.Q(first_name__icontains=query) | models.Q(last_name__icontains=query)
+        )
 
 
 class Message(models.Model):
