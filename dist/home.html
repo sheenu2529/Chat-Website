@@ -3,23 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jatte</title>
+    <title>GMI Chat</title>
     <link rel="stylesheet" href="../src/output.css" />
   </head>
-
   <body class="bg-[#FFFFFF]">
-    <!-- Header -->
-    <div class="px-5 pt-5 fixed top-0 left-0 right-0 z-10">
-      <header
-        class="bg-[#DA314D] text-[#FFFFFF] p-4 flex justify-between items-center rounded"
-      >
-        <div class="text-2xl font-semibold">Jatte</div>
-        <nav>
-          <a href="./home.html" class="ml-4 font-light">Home</a>
-          <a href="./about.html" class="ml-4 font-light">About</a>
-        </nav>
-      </header>
-    </div>
+    <!-- Include header -->
+    <div id="header"></div>
 
     <!-- Main Content -->
     <main class="flex justify-center items-center h-screen px-4 sm:px-16 pt-10">
@@ -36,8 +25,10 @@
           />
         </div>
         <div class="flex-grow w-full sm:w-3/5 flex flex-col justify-center">
-          <h1 class="text-2xl sm:text-3xl mb-4 text-[#000000] font-semibold">Welcome to Jatte</h1>
-          <p class="text-sm sm:text-base line-clamp-3 text-[#909090] font-semibold">
+          <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-[#000000]">
+            Welcome to GMI Chat
+          </h1>
+          <p class="text-sm sm:text-base line-clamp-3 text-[#909090]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             accumsan tortor at sem fermentum tempor. Suspendisse vitae augue
             dolor. Nunc sed eleifend nulla.
@@ -51,7 +42,7 @@
       id="chat-bubble"
       class="fixed bottom-4 right-4 p-4 rounded-lg shadow-lg cursor-pointer"
     >
-      <img src="./Vector.png" alt="Chat" />
+      <img src="./images/Vector.png" alt="Chat" />
     </div>
 
     <!-- Popup Window -->
@@ -68,7 +59,7 @@
               type="text"
               id="name"
               name="name"
-              class="bg-[#DFDFDF] mt-1 block w-full px-3 py-2 border rounded-md sm:text-sm font-semibold text-[#000000]"
+              class="bg-[#DFDFDF] mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none sm:text-sm font-semibold"
               required
               placeholder="Your name..."
             />
@@ -86,24 +77,21 @@
     <!-- Chat Window -->
     <div
       id="chat-window"
-      class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden "
+      class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden rounded"
     >
       <div
         class="fixed bottom-4 right-4 bg-[#FFFFFF] p-8 rounded-lg shadow-lg max-w-md w-4/5 flex flex-col h-3/4"
       >
-        <div class="flex-grow mb-4 overflow-y-auto">
-          <textarea
-            id="chat-box"
-            class="w-full h-80 p-2 border bg-[#F3F5F7] border-none rounded-md text-[#2D2D2D] font-semibold"
-            readonly
-          ></textarea>
-        </div>
+        <div
+          id="messages"
+          class="flex-grow mb-4 overflow-y-auto p-2 bg-[#F3F5F7] rounded-md text-[#2D2D2D] font-semibold"
+        ></div>
         <form id="message-form" class="flex flex-col">
           <div class="flex flex-col sm:flex-row">
             <input
               type="text"
               id="message-input"
-              class="flex-grow p-2 bg-[#F3F5F7] text-[#909090] rounded-md font-semibold"
+              class="flex-grow p-2 bg-[#F3F5F7] text-[#909090] rounded-md font-semibold focus:outline-none"
               placeholder="Type your message..."
               required
             />
@@ -120,54 +108,8 @@
       </div>
     </div>
 
-    <script>
-      // Get elements
-      const chatBubble = document.getElementById("chat-bubble");
-      const popup = document.getElementById("popup");
-      const chatForm = document.getElementById("chat-form");
-      const chatWindow = document.getElementById("chat-window");
-      const messageForm = document.getElementById("message-form");
-      const messageInput = document.getElementById("message-input");
-      const chatBox = document.getElementById("chat-box");
-
-      // Show popup when chat bubble is clicked
-      chatBubble.addEventListener("click", () => {
-        popup.classList.remove("hidden");
-      });
-
-      // Show chat window when form is submitted
-      chatForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        // Process the form data
-        const name = document.getElementById("name").value;
-        // Hide the popup and show the chat window
-        popup.classList.add("hidden");
-        chatWindow.classList.remove("hidden");
-        // Display welcome message
-        chatBox.value = `Welcome to the chat, ${name}! Please type your message below and wait for an agent to join...\n`;
-      });
-
-      // Handle message form submission
-      messageForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        // Capture and display the message
-        const message = messageInput.value;
-        chatBox.value += `You: ${message}\n`;
-        messageInput.value = "";
-      });
-
-      // Hide popup and chat window when clicking outside of them
-      popup.addEventListener("click", (event) => {
-        if (event.target === popup) {
-          popup.classList.add("hidden");
-        }
-      });
-
-      chatWindow.addEventListener("click", (event) => {
-        if (event.target === chatWindow) {
-          chatWindow.classList.add("hidden");
-        }
-      });
-    </script>
+    <!-- Include scripts -->
+    <script src="./home.js"></script>
+    <script src="./scripts.js"></script>
   </body>
 </html>
