@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="stylesheet" href="../src/output.css" />
+  </head>
+  <body class="bg-[#FFFFFF]">
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <div class="pt-16 px-5">
+      <div id="addUserSection" class="text-left mt-10 px-2">
+        <h1 class="text-[#000000] mb-4 font-semibold">Add User</h1>
+        <form id="addUserForm" class="space-y-4">
+          <div>
+            <label for="email" class="block text-[#000000]">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
+              required
+            />
+          </div>
+          <div>
+            <label for="firstname" class="block text-[#000000]"
+              >First Name</label
+            >
+            <input
+              type="text"
+              id="firstname"
+              class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="lastname" class="block text-[#000000]">Last Name</label>
+            <input
+              type="text"
+              id="lastname"
+              class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
+              required
+            />
+          </div>
+          <div>
+            <label for="password" class="block text-[#000000]">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="role" class="block text-[#000000]">Role</label>
+            <select
+              id="role"
+              class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl bg-gradient-to-l from-[#D8D8D8] to-[#EFEEEE]"
+              required
+            >
+              <option value="Manager">Manager</option>
+              <option value="Agent">Agent</option>
+            </select>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="bg-[#AF2E41] text-white px-4 py-2 rounded hover:bg-[#cc3249] font-semibold"
+            >
+              Save Changes
+            </button>
+            <button
+              type="button"
+              id="cancelAddUserBtn"
+              class="ml-2 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="fixed bottom-0 left-0 right-0 bg-[#222938] text-[#FFFFFF] text-center p-4 mt-auto"
+    >
+      <div class="container mx-auto">
+        <p>Copyright &copy; 2024 - GMI Chat</p>
+      </div>
+    </footer>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
