@@ -22,7 +22,7 @@ class RoomAdmin(admin.ModelAdmin):
 
 @admin.register(AdminandAgent)
 class AdminandAgentAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'role')
+    list_display = ('first_name', 'last_name', 'email', 'role', 'password')
     list_filter = ('role',)
     search_fields = ('first_name', 'last_name', 'email')
     ordering = ('last_name', 'first_name')
