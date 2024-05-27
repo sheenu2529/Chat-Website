@@ -22,7 +22,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView,
 )
-from Chat_app.views import create_room, GenerateToken
+from Chat_app.views import create_room
 from Chat_app import views
 from Chat_app.views import MessageListCreate, MessageDetail, RoomView
 
@@ -32,7 +32,7 @@ urlpatterns = [
     path("api/", include("Chat_app.urls")),
     path("room/", RoomView.as_view(), name="room"),
     path("create-room/<uuid:uuid>/", create_room, name="create_room"),
-    path("api/token/", GenerateToken.as_view(), name="token_obtain_pair"),
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/auth/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
     path("messages/", MessageListCreate.as_view(), name="message-list-create"),

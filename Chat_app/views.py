@@ -53,7 +53,7 @@ def create_room(request, uuid):
     return JsonResponse({"message": "room created"})
 
 
-class GenerateToken(APIView):
+class TokenObtainPairView(APIView):
     permission_classes = [AllowAny]  # Allow any user to obtain token
 
     def post(self, request):

@@ -6,11 +6,14 @@ from .models import AdminandAgent
 class AdminandAgentSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdminandAgent
-        fields = ['email', 'first_name', 'last_name', 'role','password']
+        fields = ["email", "first_name", "last_name", "role", "password"]
+
+
 class AgentEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdminandAgent
-        fields = ['email', 'first_name', 'last_name', 'role']
+        fields = ["email", "first_name", "last_name", "role"]
+
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
