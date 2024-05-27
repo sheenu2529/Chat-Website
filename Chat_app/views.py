@@ -6,7 +6,7 @@ from .serializers import MessageSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated , IsAdminUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
@@ -183,3 +183,19 @@ class RoomView(APIView):
         return Response(
             {"message": "Data received successfully"}, status=status.HTTP_200_OK
         )
+class AgentSearchAPIView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get('q', '')
+        if query:
+            agents = AdminandAgent.search(query)
+            serializer = AdminandAgentSerializer(agents, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Query parameter 'q' is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+class AgentDetailUpdateView(generics.RetrieveUpdateAPIView):
+    queryset = AdminandAgent.objects.all()
+    serializer_class = AdminandAgentSerializer
+    permission_classes = [IsAdminUser]
