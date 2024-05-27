@@ -11,11 +11,11 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
-# from rest_framework.decorators import (
-#     api_view,
-#     authentication_classes,
-#     permission_classes,
-# )
+from rest_framework.decorators import (
+    api_view,
+    authentication_classes,
+    permission_classes,
+)
 from django.shortcuts import render, redirect
 from .models import Room, Message
 from Chat_app_2.models import User
