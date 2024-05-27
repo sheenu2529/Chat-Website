@@ -2,7 +2,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from rest_framework import viewsets
-from .serializers import MessageSerializer
+from .serializers import AgentEditSerializer, MessageSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
@@ -197,5 +197,5 @@ class AgentSearchAPIView(APIView):
 
 class AgentDetailUpdateView(generics.RetrieveUpdateAPIView):
     queryset = AdminandAgent.objects.all()
-    serializer_class = AdminandAgentSerializer
+    serializer_class = AgentEditSerializer
     permission_classes = [IsAdminUser]
