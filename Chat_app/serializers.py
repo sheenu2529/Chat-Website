@@ -6,7 +6,7 @@ from .models import AdminandAgent
 class AdminandAgentSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdminandAgent
-        fields = ['email', 'first_name', 'last_name', 'role']
+        fields = ['email', 'first_name', 'last_name', 'role','password']
 
 
 class MessageSerializer(serializers.ModelSerializer):
