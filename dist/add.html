@@ -20,6 +20,7 @@
             <input
               type="email"
               id="email"
+              name="email"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
               required
             />
@@ -31,6 +32,7 @@
             <input
               type="text"
               id="firstname"
+              name="firstname"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
               required
             />
@@ -41,6 +43,7 @@
             <input
               type="text"
               id="lastname"
+              name="lastname"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
               required
             />
@@ -50,6 +53,7 @@
             <input
               type="password"
               id="password"
+              name="password"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
               required
             />
@@ -59,6 +63,7 @@
             <label for="role" class="block text-[#000000]">Role</label>
             <select
               id="role"
+              name="role"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl bg-gradient-to-l from-[#D8D8D8] to-[#EFEEEE]"
               required
             >
@@ -94,6 +99,37 @@
       </div>
     </footer>
 
-    <script src="./scripts.js"></script>
+    <!-- Inline JavaScript to handle form submission -->
+    <script src="./scripts.js">
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector("#addUserForm");
+        const cancelBtn = document.querySelector("#cancelAddUserBtn");
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(form);
+          const userData = {
+            email: formData.get("email"),
+            firstName: formData.get("firstname"),
+            lastName: formData.get("lastname"),
+            password: formData.get("password"),
+            role: formData.get("role"),
+          };
+
+          // Retrieve current users from local storage
+          let users = JSON.parse(localStorage.getItem("users")) || [];
+          users.push(userData);
+          localStorage.setItem("users", JSON.stringify(users));
+
+          alert("User added successfully!");
+          window.location.href = "admin.html";
+        });
+
+        cancelBtn.addEventListener("click", () => {
+          window.location.href = "admin.html";
+        });
+      });
+    </script>
   </body>
 </html>

@@ -27,63 +27,18 @@
         </div>
 
         <!-- Users Table -->
-        <div class="overflow-x-auto bg-red-700">
-          <table class="min-w-full divide-y divide-gray-200">
+        <div class="overflow-x-auto">
+          <table id="usersTable" class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-200">
               <tr class="border-b">
-                <th
-                  class="px-6 text-left font-medium text-gray-500 uppercase"
-                >
-                  Name
-                </th>
-                <th
-                  class="px-6 text-left font-medium text-gray-500 uppercase"
-                >
-                  Email
-                </th>
-                <th
-                  class="px-6 py-4 text-left font-medium text-gray-500 uppercase"
-                >
-                  Role
-                </th>
-                <th
-                  class="px-6 py-4 text-left font-medium text-gray-500 uppercase"
-                >
-                  Action
-                </th>
+                <th class="px-6 text-left font-medium text-gray-500 uppercase">Name</th>
+                <th class="px-6 text-left font-medium text-gray-500 uppercase">Email</th>
+                <th class="px-6 py-4 text-left font-medium text-gray-500 uppercase">Role</th>
+                <th class="px-6 py-4 text-left font-medium text-gray-500 uppercase">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="border-b even:bg-[#FFFFFF] odd:bg-[#F2F4F5]">
-                <td class="px-6 py-2">Admin Manager</td>
-                <td class="px-6 py-2">admin@gmindia.tech</td>
-                <td class="px-6 py-2">Manager</td>
-                <td class="px-6 py-2">
-                  <button class="text-blue-600 hover:underline">
-                    <a href="./edit.html">Edit</a>
-                  </button>
-                </td>
-              </tr>
-              <tr class="border-b even:bg-[#FFFFFF] odd:bg-[#F2F4F5]">
-                <td class="px-6 py-2">John Doe</td>
-                <td class="px-6 py-2">johndoe@gmindia.tech</td>
-                <td class="px-6 py-2">Agent</td>
-                <td class="px-6 py-2">
-                  <button class="text-blue-600 hover:underline">
-                    <a href="./edit.html">Edit</a>
-                  </button>
-                </td>
-              </tr>
-              <tr class="border-b even:bg-[#FFFFFF] odd:bg-[#F2F4F5]">
-                <td class="px-6">Stein Ove</td>
-                <td class="px-6">stein@gmindia.tech</td>
-                <td class="px-6">Agent</td>
-                <td class="px-6 py-2">
-                  <button class="text-blue-600 hover:underline">
-                    <a href="./edit.html">Edit</a>
-                  </button>
-                </td>
-              </tr>
+            <tbody id="usersTableBody">
+              <!-- User rows will be added here by JavaScript -->
             </tbody>
           </table>
         </div>
@@ -94,35 +49,38 @@
         </div>
         <div class="w-full md:w-64">
           <div class="bg-[#D8F2E4] p-4 rounded-lg">
-            <h2 class="text-xl font-semibold mb-2 text-[#000000] text-[30px]">
-              Chat
-            </h2>
+            <h2 class="text-xl font-semibold mb-2 text-[#000000] text-[30px]">Chat</h2>
             <div class="pb-2">
               <div class="border-green-300 px-2">
                 <p><strong>ID:</strong>3o6p0ljs56</p>
                 <p><strong>Name:</strong> Stein</p>
-                <p><strong>Status:</strong>Waiting</p>
-                <p><strong>Agent:</strong>None Yet...</p>
+                <p><strong>Status:</strong> Waiting</p>
+                <p><strong>Agent:</strong> None Yet...</p>
               </div>
               <div class="flex mt-4">
-                <button
-                  class="bg-[#285D46] text-[#FFFFFF] px-4 py-2 rounded-md mr-2"
-                >
+                <button class="bg-[#285D46] text-[#FFFFFF] px-4 py-2 rounded-md mr-2">
                   <a href="./chat.html">Join</a>
                 </button>
-                <button
-                  class="bg-[#E3343F] text-[#FFFFFF] px-4 py-2 rounded-md"
-                >
-                  Delete
-                </button>
+                <button class="bg-[#E3343F] text-[#FFFFFF] px-4 py-2 rounded-md">Delete</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </main>
+    <br>
+    <br>
+    <br>
 
-    <!-- Include header -->
+    <!-- Include footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-[#222938] text-[#FFFFFF] text-center p-4 mt-auto">
+      <div class="container mx-auto">
+        <p>Copyright &copy; 2024 - GMI Chat</p>
+      </div>
+    </footer>
+    
+
+    <!-- Inline JavaScript to load user details -->
     <script src="./scripts.js"></script>
   </body>
 </html>
