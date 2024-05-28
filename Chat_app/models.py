@@ -42,6 +42,40 @@ class Message(models.Model):
         return f"{self.sent_by}"
 
 
+# class Room(models.Model):
+#     WAITING = "waiting"
+#     ACTIVE = "active"
+#     CLOSED = "closed"
+
+#     CHOICES_STATUS = (
+#         (WAITING, "Waiting"),
+#         (ACTIVE, "Active"),
+#         (CLOSED, "Closed"),
+#     )
+
+#     uuid = models.CharField(max_length=255)
+#     client = models.CharField(max_length=255)
+#     agent = models.ForeignKey(
+#         User, related_name="rooms", blank=True, null=True, on_delete=models.SET_NULL
+#     )
+#     messages = models.ManyToManyField(Message, blank=True)
+#     url = models.CharField(max_length=255, blank=True, null=True)
+#     status = models.CharField(max_length=20, choices=CHOICES_STATUS, default=WAITING)
+#     created_at = models.DateTimeField(auto_now_add=True)
+
+#     class Meta:
+#         ordering = ("created_at",)
+
+#     def __str__(self):
+#         return f"{self.client} - {self.uuid}"
+
+
+class NewUser(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+
 class Room(models.Model):
     WAITING = "waiting"
     ACTIVE = "active"
@@ -53,18 +87,10 @@ class Room(models.Model):
         (CLOSED, "Closed"),
     )
 
-    uuid = models.CharField(max_length=255)
-    client = models.CharField(max_length=255)
-    agent = models.ForeignKey(
-        User, related_name="rooms", blank=True, null=True, on_delete=models.SET_NULL
-    )
-    messages = models.ManyToManyField(Message, blank=True)
-    url = models.CharField(max_length=255, blank=True, null=True)
+    room_id = models.CharField(max_length=10, unique=True)
+    name = models.CharField(max_length=50)
     status = models.CharField(max_length=20, choices=CHOICES_STATUS, default=WAITING)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ("created_at",)
+    agent = models.ForeignKey(NewUser, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.client} - {self.uuid}"
+        return self.room_id

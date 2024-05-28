@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Message, Room
+from .models import Message, NewUser, Room
 from .models import AdminandAgent
 
 
@@ -21,7 +21,12 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class NewUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewUser
+        fields = '__all__'
+
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
-        fields = "__all__"
+        fields = '__all__'

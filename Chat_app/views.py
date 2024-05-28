@@ -1,8 +1,9 @@
 import json
+from os import name
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from rest_framework import viewsets
-from .serializers import AgentEditSerializer, MessageSerializer
+from .serializers import AdminandAgentSerializer, AgentEditSerializer, MessageSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics
@@ -17,12 +18,13 @@ from rest_framework.decorators import (
     permission_classes,
 )
 from django.shortcuts import render, redirect
-from .models import Room, Message
+from .models import NewUser, Room, Message
 from Chat_app_2.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 from rest_framework import generics, permissions
 from .models import AdminandAgent
-from .serializers import AdminandAgentSerializer
+from .serializers import NewUserSerializer, RoomSerializer
+from datetime import datetime
 
 
 
@@ -199,3 +201,22 @@ class AgentDetailUpdateView(generics.RetrieveUpdateAPIView):
     queryset = AdminandAgent.objects.all()
     serializer_class = AgentEditSerializer
     permission_classes = [IsAdminUser]
+
+class NewUserViewSet(viewsets.ModelViewSet):
+    queryset = NewUser.objects.all()
+    serializer_class = NewUserSerializer
+
+    def perform_create(self, serializer):
+        new_user = serializer.save()
+        
+        # Automatically create a room when a new user is created
+        room_id = "auto_generated_id"  # You can generate a unique room ID here
+        room_name = new_user.name  # Use the username as the room name
+        room_status = "active"  # Set the initial status of the room
+        
+        # Assuming you want to associate the room with the newly created user
+        Room.objects.create(room_id=room_id, name=room_name, status=room_status, agent=new_user)
+
+class RoomViewSet(viewsets.ModelViewSet):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer

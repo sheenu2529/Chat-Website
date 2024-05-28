@@ -1,14 +1,15 @@
 from django.urls import path, include
 from .views import AdminandAgentView, AgentDetailUpdateView, AgentSearchAPIView, create_room
-# from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter
 from . import views
-# from .views import MessageViewSet
+from .views import NewUserViewSet, RoomViewSet
 
-# router = DefaultRouter()
-# router.register(r'messages', MessageViewSet)
+router = DefaultRouter()
+router.register(r'newuser', NewUserViewSet)
+router.register(r'rooms', RoomViewSet)
 
 urlpatterns = [
-    # path('', include(router.urls)),
+    path('', include(router.urls)),
     path('api/create-room/<str:uuid>/', views.create_room, name='create-room'),
     path('chat-admin/', views. admin, name='admin'),
     path('chat-admin/<str:uuid>/', views.room, name='room'),
