@@ -1,5 +1,6 @@
 import json
 from os import name
+import uuid
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from rest_framework import viewsets
@@ -210,7 +211,7 @@ class NewUserViewSet(viewsets.ModelViewSet):
         new_user = serializer.save()
         
         # Automatically create a room when a new user is created
-        room_id = "auto_generated_id"  # You can generate a unique room ID here
+        room_id = str(uuid.uuid4())  # You can generate a unique room ID here
         room_name = new_user.name  # Use the username as the room name
         room_status = "active"  # Set the initial status of the room
         
