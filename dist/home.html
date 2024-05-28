@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GMI Chat</title>
-    <link rel="stylesheet" href="../src/output.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-[#FFFFFF]">
     <!-- Include header -->
@@ -29,9 +32,7 @@
             Welcome to GMI Chat
           </h1>
           <p class="text-sm sm:text-base line-clamp-3 text-[#909090]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            accumsan tortor at sem fermentum tempor. Suspendisse vitae augue
-            dolor. Nunc sed eleifend nulla.
+            Welcome to GMI Chat, where conversations come alive!
           </p>
         </div>
       </div>
@@ -84,7 +85,7 @@
       >
         <div
           id="messages"
-          class="flex-grow mb-4 overflow-y-auto p-2 bg-[#F3F5F7] rounded-md text-[#2D2D2D] font-semibold"
+          class="flex-grow mb-4 overflow-y-auto p-2 bg-[#F3F5F7] rounded-md text-[#2D2D2D] font-semibold flex flex-col"
         ></div>
         <form id="message-form" class="flex flex-col">
           <div class="flex flex-col sm:flex-row">
@@ -109,7 +110,7 @@
     </div>
 
     <!-- Include scripts -->
-    <script src="./home.js"></script>
     <script src="./scripts.js"></script>
+    <script src="./home.js"></script>
   </body>
 </html>

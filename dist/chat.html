@@ -1,177 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Page</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    class="bg-[#FFFFFF] flex flex-col items-center justify-center h-screen px-5"
-  >
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-[#FFFFFF] flex flex-col items-center justify-center h-screen px-5">
     <!--Header-->
     <div id="header"></div>
 
     <div class="w-full flex flex-col justify-between h-full max-h-screen">
-      <!-- User Info -->
-      <div class="pt-28 pb-4">
-        <div class="border-b-4 border-t-4 pt-2 pb-2 px-2">
-          <p><strong class="font-semibold">Name:</strong> Stein</p>
-          <p><strong class="font-semibold">Started:</strong> 0 Minutes Ago</p>
-          <p><strong class="font-semibold">Status:</strong> Active</p>
-          <p>
-            <strong class="font-semibold">Page:</strong>
-            <a
-              href="http://127.0.0.1:8002/"
-              class="text-blue-600 hover:underline"
-              >http://127.0.0.1:8002/</a
-            >
-          </p>
-          <p><strong class="font-semibold">Agent:</strong> Stein Ove</p>
-        </div>
-      </div>
-
-      <!-- Chat Messages -->
-      <div
-        id="chatMessages"
-        class="bg-[#F3F5F7] p-4 flex flex-col space-y-4 overflow-y-auto h-full rounded-3xl pt-5"
-      >
-        <!-- Sample Message from Another Person -->
-        <div class="flex items-end space-x-2 justify-end">
-          <div
-            class="bg-[#D4D7D8] p-2 rounded-t-none rounded-l-lg rounded-b-lg rounded-r-lg"
-          >
-            <p class="font-semibold">Hi there!</p>
-          </div>
-          <div
-            class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center"
-          >
-            <span class="text-[#000000] font-semibold">A</span>
-          </div>
-        </div>
-
-        <!-- Your Messages -->
-        <div class="flex items-start space-x-2">
-          <div
-            class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center"
-          >
-            <span class="text-[#000000] font-semibold">S</span>
-          </div>
-          <div
-            class="bg-[#D4D7D8] p-2 rounded-t-none rounded-r-lg rounded-b-lg rounded-l-lg"
-          >
-            <p class="typing-indicator font-semibold">
-              Stein is writing a message...
-            </p>
-          </div>
-        </div>
-
-        <!-- Newly Added Messages -->
-        <!-- Replace these sample messages with actual ones -->
-        <div class="flex items-end space-x-2 justify-end">
-          <div
-            class="bg-[#D4D7D8] p-2 rounded-t-none rounded-l-lg rounded-b-lg rounded-r-lg"
-          >
-            <p class="font-semibold">This is another person's message.</p>
-          </div>
-          <div
-            class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center"
-          >
-            <span class="text-[#000000] font-semibold">B</span>
-          </div>
-        </div>
-        <div class="flex items-start space-x-2">
-          <div
-            class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center"
-          >
-            <span class="text-[#000000] font-semibold">S</span>
-          </div>
-          <div>
-            <div
-              class="bg-[#D4D7D8] p-2 rounded-t-none rounded-r-lg rounded-b-lg rounded-l-lg"
-            >
-              <p class="font-semibold">Hello!</p>
+        <!-- User Info -->
+        <div class="pt-28 pb-4">
+            <div class="border-b-4 border-t-4 pt-2 pb-2 px-2">
+                <p><strong class="font-semibold">Name:</strong> Stein</p>
+                <p><strong class="font-semibold">Started:</strong> 0 Minutes Ago</p>
+                <p><strong class="font-semibold">Status:</strong> Active</p>
+                <p>
+                    <strong class="font-semibold">Page:</strong>
+                    <a href="http://127.0.0.1:8002/" class="text-blue-600 hover:underline">http://127.0.0.1:8002/</a>
+                </p>
+                <p><strong class="font-semibold">Agent:</strong> Stein Ove</p>
             </div>
-            <span class="text-[#8F8F8F] text-xs font-semibold"
-              >0 minutes ago</span
-            >
-          </div>
         </div>
-      </div>
 
-      <!-- Message Input -->
-      <div class="pt-4">
-        <div class="py-4 border-t-4 flex items-center space-x-2">
-          <input
-            type="text"
-            id="messageInput"
-            placeholder="Type Your Message...."
-            class="bg-[#F3F5F7] flex-grow px-4 py-2 border rounded-lg focus:outline-none font-semibold"
-          />
+        <!-- Chat Messages -->
+        <div id="chatMessages" class="bg-[#F3F5F7] p-4 flex flex-col space-y-4 overflow-y-auto h-full rounded-3xl pt-5">
+            <!-- Sample Message from Another Person -->
+            <div class="flex items-end space-x-2 justify-end">
+                <div class="bg-[#D4D7D8] p-2 rounded-t-none rounded-l-lg rounded-b-lg rounded-r-lg">
+                    <p class="font-semibold">Hi there!</p>
+                </div>
+                <div class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center">
+                    <span class="text-[#000000] font-semibold">A</span>
+                </div>
+            </div>
+
+            <!-- Your Messages -->
+            <div class="flex items-start space-x-2">
+                <div class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center">
+                    <span class="text-[#000000] font-semibold">S</span>
+                </div>
+                <div class="bg-[#D4D7D8] p-2 rounded-t-none rounded-r-lg rounded-b-lg rounded-l-lg">
+                    <p class="typing-indicator font-semibold">Stein is writing a message...</p>
+                </div>
+            </div>
         </div>
-        <div class="pb-2 flex justify-between">
-          <button
-            onclick="sendMessage()"
-            class="bg-[#DA314D] text-white px-10 py-2 rounded-lg font-semibold"
-          >
-            Send
-          </button>
-          <button
-            class="bg-[#143dd0] text-white px-10 py-2 rounded-lg font-semibold"
-          >
-            <a href="./admin.html">Leave</a>
-          </button>
+
+        <!-- Message Input -->
+        <div class="pt-4">
+            <div class="py-4 border-t-4 flex items-center space-x-2">
+                <input type="text" id="messageInput" placeholder="Type Your Message...." class="bg-[#F3F5F7] flex-grow px-4 py-2 border rounded-lg focus:outline-none font-semibold" />
+            </div>
+            <div class="pb-2 flex justify-between">
+                <button onclick="sendMessage()" class="bg-[#DA314D] text-white px-10 py-2 rounded-lg font-semibold">Send</button>
+                <button class="bg-[#143dd0] text-white px-10 py-2 rounded-lg font-semibold">
+                    <a href="./admin.html">Leave</a>
+                </button>
+            </div>
         </div>
-      </div>
     </div>
 
-    <script src="./scripts.js"></script>
-    <script>
-      function sendMessage() {
-        // Get the message input element
-        var messageInput = document.getElementById("messageInput");
+    <script src="./scripts.js">
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatMessages = document.getElementById("chatMessages");
+            const messageInput = document.getElementById("messageInput");
+            let typingTimeout;
 
-        // Get the value of the message input
-        var message = messageInput.value;
+            function sendMessage() {
+                const message = messageInput.value;
+                if (message.trim() !== "") {
+                    addMessage(message, "user");
+                    messageInput.value = "";
 
-        // Check if the message is not empty
-        if (message.trim() !== "") {
-          // Create a new message element
-          var messageElement = document.createElement("div");
-          messageElement.className = "flex items-start space-x-2 justify-start"; // Style the message to align it to the right
-          messageElement.innerHTML = `
-      <div
-        class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center"
-      >
-        <span class="text-[#000000] font-semibold">S</span>
-      </div>
-      <div
-        class="bg-[#D4D7D8] p-2 rounded-t-none rounded-l-lg rounded-b-lg rounded-r-lg"
-      >
-        <p class="font-semibold">${message}</p>
-      </div>
-      
-    `;
+                    // Simulate agent typing
+                    showTypingIndicator();
+                    clearTimeout(typingTimeout);
+                    typingTimeout = setTimeout(() => {
+                        hideTypingIndicator();
+                        addMessage("This is a response from the agent.", "agent");
+                    }, 2000);
+                } else {
+                    alert("Please enter a message.");
+                }
+            }
 
-          // Get the chat messages container
-          var chatMessages = document.getElementById("chatMessages");
+            function addMessage(message, sender = "user") {
+                const messageElement = document.createElement("div");
+                const messageContent = document.createElement("div");
+                const avatar = document.createElement("div");
+                const avatarText = document.createElement("span");
 
-          // Append the new message element to the chat messages container
-          chatMessages.appendChild(messageElement);
+                avatar.classList.add("flex-shrink-0", "bg-[#D9D9D9]", "rounded-full", "h-8", "w-8", "flex", "items-center", "justify-center", "font-semibold", "text-[#000000]");
 
-          // Scroll to the bottom of the chat messages container
-          chatMessages.scrollTop = chatMessages.scrollHeight;
+                if (sender === "agent") {
+                    messageElement.classList.add("flex", "items-end", "space-x-2", "justify-end");
+                    messageContent.classList.add("bg-[#DA314D]", "text-[#FFFFFF]", "p-2", "rounded-t-none", "rounded-l-lg", "rounded-b-lg", "rounded-r-lg");
+                    avatarText.textContent = "A";
+                } else if (sender === "user") {
+                    messageElement.classList.add("flex", "items-start", "space-x-2");
+                    messageContent.classList.add("bg-[#E2E8F0]", "text-[#2D2D2D]", "p-2", "rounded-t-none", "rounded-r-lg", "rounded-b-lg", "rounded-l-lg");
+                    avatarText.textContent = "S";
+                } else {
+                    messageElement.classList.add("flex", "items-center", "justify-center");
+                    messageContent.classList.add("bg-[#F3F5F7]", "text-[#2D2D2D]", "p-2", "rounded-md", "text-center", "w-full");
+                    avatarText.textContent = "";
+                }
 
-          // Clear the message input
-          messageInput.value = "";
-        } else {
-          // Alert the user to enter a message if the message is empty
-          alert("Please enter a message.");
-        }
-      }
+                messageContent.textContent = message;
+                avatar.appendChild(avatarText);
+                messageElement.appendChild(avatar);
+                messageElement.appendChild(messageContent);
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function showTypingIndicator() {
+                const typingIndicator = document.createElement("div");
+                typingIndicator.id = "typing-indicator";
+                typingIndicator.classList.add("p-2", "mb-2", "rounded", "bg-[#F3F5F7]", "text-[#909090]", "self-end", "max-w-xs", "italic");
+                typingIndicator.textContent = "Agent is typing...";
+                chatMessages.appendChild(typingIndicator);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function hideTypingIndicator() {
+                const typingIndicator = document.getElementById("typing-indicator");
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+
+            window.sendMessage = sendMessage;  // Expose sendMessage function to global scope
+        });
     </script>
-  </body>
+</body>
 </html>
