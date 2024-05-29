@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/output.css" />
+    <title>Header</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="px-5 pt-5 fixed top-0 left-0 right-0 z-10">
+      <header
+        class="bg-[#DA314D] p-4 flex justify-between items-center rounded"
+      >
+        <div class="text-2xl font-semibold text-[#FFFFFF]">GMI Chat</div>
+
+        <button id="toggleNavBtn" class="block sm:hidden">
+          <svg
+            class="w-6 h-6 text-[#FFFFFF]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+
+        <nav
+          id="navLinks"
+          class="hidden flex-col space-y-4 sm:flex sm:flex-row sm:space-y-0 sm:space-x-4"
+        >
+          <a href="./home.html" class="text-white hidden" id="homeLink">Home</a>
+          <a href="./about.html" class="text-white hidden" id="aboutLink">About</a>
+          <a
+            href="./admin.html"
+            class="bg-[#8E243A] px-3 py-1 rounded text-white hidden"
+            id="chatAdmin"
+            >Chat Admin</a
+          >
+          <a
+            href="./signin.html"
+            class="bg-[#8E243A] px-3 py-1 rounded text-white hidden"
+            id="agentSignIn"
+            >Sign-In</a
+          >
+          <a
+            href="#"
+            class="bg-[#8E243A] px-3 py-1 rounded text-white hidden"
+            id="logout"
+            >Logout</a
+          >
+        </nav>
+      </header>
+    </div>
+  </body>
+</html>
