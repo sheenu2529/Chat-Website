@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add User</title>
+    <title>Add Agent</title>
     <link rel="stylesheet" href="../src/output.css" />
   </head>
   <body class="bg-[#FFFFFF]">
@@ -12,9 +12,9 @@
 
     <!-- Main Content -->
     <div class="pt-16 px-5">
-      <div id="addUserSection" class="text-left mt-10 px-2">
-        <h1 class="text-[#000000] mb-4 font-semibold">Add User</h1>
-        <form id="addUserForm" class="space-y-4">
+      <div id="addAgentSection" class="text-left mt-10 px-2">
+        <h1 class="text-[#000000] mb-4 font-semibold">Add Agent</h1>
+        <form id="addAgentForm" class="space-y-4">
           <div>
             <label for="email" class="block text-[#000000]">Email</label>
             <input
@@ -32,7 +32,7 @@
             <input
               type="text"
               id="firstname"
-              name="firstname"
+              name="first_name"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
               required
             />
@@ -43,7 +43,7 @@
             <input
               type="text"
               id="lastname"
-              name="lastname"
+              name="last_name"
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl font-normal"
               required
             />
@@ -67,8 +67,8 @@
               class="w-full p-2 border-[3px] border-[#EAEAEA] rounded-xl bg-gradient-to-l from-[#D8D8D8] to-[#EFEEEE]"
               required
             >
-              <option value="Manager">Manager</option>
-              <option value="Agent">Agent</option>
+              <option value="manager">Manager</option>
+              <option value="agent">Agent</option>
             </select>
           </div>
           <div>
@@ -76,11 +76,11 @@
               type="submit"
               class="bg-[#AF2E41] text-white px-4 py-2 rounded hover:bg-[#cc3249] font-semibold"
             >
-              Save Changes
+              ADD AGENT
             </button>
             <button
               type="button"
-              id="cancelAddUserBtn"
+              id="cancelAddAgentBtn"
               class="ml-2 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
             >
               Cancel
@@ -100,36 +100,7 @@
     </footer>
 
     <!-- Inline JavaScript to handle form submission -->
-    <script src="./scripts.js">
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.querySelector("#addUserForm");
-        const cancelBtn = document.querySelector("#cancelAddUserBtn");
-
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-
-          const formData = new FormData(form);
-          const userData = {
-            email: formData.get("email"),
-            firstName: formData.get("firstname"),
-            lastName: formData.get("lastname"),
-            password: formData.get("password"),
-            role: formData.get("role"),
-          };
-
-          // Retrieve current users from local storage
-          let users = JSON.parse(localStorage.getItem("users")) || [];
-          users.push(userData);
-          localStorage.setItem("users", JSON.stringify(users));
-
-          alert("User added successfully!");
-          window.location.href = "admin.html";
-        });
-
-        cancelBtn.addEventListener("click", () => {
-          window.location.href = "admin.html";
-        });
-      });
-    </script>
+    <script src="./agent.js"></script>
+    <script src="./scripts.js"></script>
   </body>
 </html>

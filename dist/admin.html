@@ -12,75 +12,182 @@
 
     <!-- Main Content -->
     <main class="container mx-auto flex-grow px-6 pt-5">
-      <div id="adminSection" class="text-left">
-        <!-- User Section -->
+      <div id="adminSection" class="text-left hidden">
+        <!-- Agent Section -->
         <h1 class="text-2xl font-bold mb-4 mt-10">Admin</h1>
         <div>
-          <h2 class="text-xl font-semibold pt-4">Users</h2>
+          <h2 class="text-xl font-semibold pt-4">Agents</h2>
           <br />
           <button
-            id="addUserBtn"
+            id="addAgentBtn"
             class="bg-[#DA314D] text-[#FFFFFF] px-4 py-2 rounded-md mb-4 hover:bg-red-700"
           >
-            <a href="./add.html">Add User</a>
+            <a href="./add.html">Add Agent</a>
           </button>
         </div>
 
-        <!-- Users Table -->
+        <!-- Agents Table -->
         <div class="overflow-x-auto">
-          <table id="usersTable" class="min-w-full divide-y divide-gray-200">
+          <table id="agentsTable" class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-200">
               <tr class="border-b">
-                <th class="px-6 text-left font-medium text-gray-500 uppercase">Name</th>
-                <th class="px-6 text-left font-medium text-gray-500 uppercase">Email</th>
-                <th class="px-6 py-4 text-left font-medium text-gray-500 uppercase">Role</th>
-                <th class="px-6 py-4 text-left font-medium text-gray-500 uppercase">Action</th>
+                <th class="px-6 text-left font-medium text-gray-500 uppercase">
+                  Name
+                </th>
+                <th class="px-6 text-left font-medium text-gray-500 uppercase">
+                  Email
+                </th>
+                <th
+                  class="px-6 py-4 text-left font-medium text-gray-500 uppercase"
+                >
+                  Role
+                </th>
+                <th
+                  class="px-6 py-4 text-left font-medium text-gray-500 uppercase"
+                >
+                  Action
+                </th>
               </tr>
             </thead>
-            <tbody id="usersTableBody">
-              <!-- User rows will be added here by JavaScript -->
+            <tbody id="agentsTableBody">
+              <!-- agent rows will be added here by JavaScript -->
             </tbody>
           </table>
         </div>
+      </div>
 
-        <!-- Rooms Section -->
-        <div class="py-4">
-          <h1 class="text-[#000000] font-semibold text-[32px]">Rooms</h1>
-        </div>
-        <div class="w-full md:w-64">
+      <!-- Rooms Section -->
+      <div class="py-10 hidden" id="roomSection">
+        <h1 class="text-black font-semibold text-2xl md:text-4xl pb-4">Rooms</h1>
+
+        <div
+          class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
           <div class="bg-[#D8F2E4] p-4 rounded-lg">
-            <h2 class="text-xl font-semibold mb-2 text-[#000000] text-[30px]">Chat</h2>
+            <h2 class="text-2xl font-semibold mb-2 text-black">Chat</h2>
             <div class="pb-2">
               <div class="border-green-300 px-2">
-                <p><strong>ID:</strong>3o6p0ljs56</p>
+                <p><strong>ID:</strong> 3o6p0ljs56</p>
                 <p><strong>Name:</strong> Stein</p>
                 <p><strong>Status:</strong> Waiting</p>
                 <p><strong>Agent:</strong> None Yet...</p>
               </div>
               <div class="flex mt-4">
-                <button class="bg-[#285D46] text-[#FFFFFF] px-4 py-2 rounded-md mr-2">
-                  <a href="./chat.html">Join</a>
+                <a
+                  href="./chat.html"
+                  class="bg-[#285D46] text-white px-4 py-2 rounded-md mr-2"
+                >
+                  Join
+                </a>
+                <button class="bg-[#E3343F] text-white px-4 py-2 rounded-md">
+                  Delete
                 </button>
-                <button class="bg-[#E3343F] text-[#FFFFFF] px-4 py-2 rounded-md">Delete</button>
               </div>
             </div>
           </div>
+
+          <!-- Duplicate the above div for each room, as needed -->
+          <div class="bg-[#D8F2E4] p-4 rounded-lg">
+            <h2 class="text-2xl font-semibold mb-2 text-black">Chat</h2>
+            <div class="pb-2">
+              <div class="border-green-300 px-2">
+                <p><strong>ID:</strong> 3o6p0ljs56</p>
+                <p><strong>Name:</strong> Stein</p>
+                <p><strong>Status:</strong> Waiting</p>
+                <p><strong>Agent:</strong> None Yet...</p>
+              </div>
+              <div class="flex mt-4">
+                <a
+                  href="./chat.html"
+                  class="bg-[#285D46] text-white px-4 py-2 rounded-md mr-2"
+                >
+                  Join
+                </a>
+                <button class="bg-[#E3343F] text-white px-4 py-2 rounded-md">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+           <!-- Duplicate the above div for each room, as needed -->
+           <div class="bg-[#D8F2E4] p-4 rounded-lg">
+            <h2 class="text-2xl font-semibold mb-2 text-black">Chat</h2>
+            <div class="pb-2">
+              <div class="border-green-300 px-2">
+                <p><strong>ID:</strong> 3o6p0ljs56</p>
+                <p><strong>Name:</strong> Stein</p>
+                <p><strong>Status:</strong> Waiting</p>
+                <p><strong>Agent:</strong> None Yet...</p>
+              </div>
+              <div class="flex mt-4">
+                <a
+                  href="./chat.html"
+                  class="bg-[#285D46] text-white px-4 py-2 rounded-md mr-2"
+                >
+                  Join
+                </a>
+                <button class="bg-[#E3343F] text-white px-4 py-2 rounded-md">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+           <!-- Duplicate the above div for each room, as needed -->
+           <div class="bg-[#D8F2E4] p-4 rounded-lg">
+            <h2 class="text-2xl font-semibold mb-2 text-black">Chat</h2>
+            <div class="pb-2">
+              <div class="border-green-300 px-2">
+                <p><strong>ID:</strong> 3o6p0ljs56</p>
+                <p><strong>Name:</strong> Stein</p>
+                <p><strong>Status:</strong> Waiting</p>
+                <p><strong>Agent:</strong> None Yet...</p>
+              </div>
+              <div class="flex mt-4">
+                <a
+                  href="./chat.html"
+                  class="bg-[#285D46] text-white px-4 py-2 rounded-md mr-2"
+                >
+                  Join
+                </a>
+                <button class="bg-[#E3343F] text-white px-4 py-2 rounded-md">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+           <!-- Duplicate the above div for each room, as needed -->
+           <div class="bg-[#D8F2E4] p-4 rounded-lg">
+            <h2 class="text-2xl font-semibold mb-2 text-black">Chat</h2>
+            <div class="pb-2">
+              <div class="border-green-300 px-2">
+                <p><strong>ID:</strong> 3o6p0ljs56</p>
+                <p><strong>Name:</strong> Stein</p>
+                <p><strong>Status:</strong> Waiting</p>
+                <p><strong>Agent:</strong> None Yet...</p>
+              </div>
+              <div class="flex mt-4">
+                <a
+                  href="./chat.html"
+                  class="bg-[#285D46] text-white px-4 py-2 rounded-md mr-2"
+                >
+                  Join
+                </a>
+                <button class="bg-[#E3343F] text-white px-4 py-2 rounded-md">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
-    <br>
-    <br>
-    <br>
 
-    <!-- Include footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-[#222938] text-[#FFFFFF] text-center p-4 mt-auto">
-      <div class="container mx-auto">
-        <p>Copyright &copy; 2024 - GMI Chat</p>
-      </div>
-    </footer>
-    
-
-    <!-- Inline JavaScript to load user details -->
+    <!-- Inline JavaScript to load agent details -->
     <script src="./scripts.js"></script>
+    <script src="./agent.js"></script>
   </body>
 </html>
