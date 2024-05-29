@@ -1,139 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-</head>
-<body class="bg-[#FFFFFF] flex flex-col items-center justify-center h-screen px-5">
-    <!--Header-->
+    <link rel="stylesheet" href="../src/output.css" />
+  </head>
+  <body
+    class="bg-[#FFFFFF] flex flex-col items-center justify-center h-screen px-5"
+  >
     <div id="header"></div>
-
     <div class="w-full flex flex-col justify-between h-full max-h-screen">
-        <!-- User Info -->
-        <div class="pt-28 pb-4">
-            <div class="border-b-4 border-t-4 pt-2 pb-2 px-2">
-                <p><strong class="font-semibold">Name:</strong> Stein</p>
-                <p><strong class="font-semibold">Started:</strong> 0 Minutes Ago</p>
-                <p><strong class="font-semibold">Status:</strong> Active</p>
-                <p>
-                    <strong class="font-semibold">Page:</strong>
-                    <a href="http://127.0.0.1:8002/" class="text-blue-600 hover:underline">http://127.0.0.1:8002/</a>
-                </p>
-                <p><strong class="font-semibold">Agent:</strong> Stein Ove</p>
-            </div>
+      <div class="pt-28 pb-4" id="userInfo">
+        <div class="border-b-4 border-t-4 pt-2 pb-2 px-2">
+          <p>
+            <strong class="font-semibold">Name:</strong>
+            <span id="userNameDisplay">Loading...</span>
+          </p>
+          <p>
+            <strong class="font-semibold">Started:</strong>
+            <span id="startedTime">Loading...</span>
+          </p>
+          <p>
+            <strong class="font-semibold">Status:</strong>
+            <select
+              id="status"
+              class="font-semibold border border-gray-300 rounded-md p-1"
+            >
+              <option value="waiting">Waiting</option>
+              <option value="active">Active</option>
+              <option value="closed">Closed</option>
+            </select>
+          </p>
+          <p>
+            <strong class="font-semibold">Page:</strong>
+            <a
+              href="http://127.0.0.1:8002/"
+              id="pageUrl"
+              class="text-blue-600 hover:underline"
+              >Loading...</a
+            >
+          </p>
+          <p>
+            <strong class="font-semibold">Agent:</strong>
+            <span id="agentName">Loading...</span>
+          </p>
         </div>
-
-        <!-- Chat Messages -->
-        <div id="chatMessages" class="bg-[#F3F5F7] p-4 flex flex-col space-y-4 overflow-y-auto h-full rounded-3xl pt-5">
-            <!-- Sample Message from Another Person -->
-            <div class="flex items-end space-x-2 justify-end">
-                <div class="bg-[#D4D7D8] p-2 rounded-t-none rounded-l-lg rounded-b-lg rounded-r-lg">
-                    <p class="font-semibold">Hi there!</p>
-                </div>
-                <div class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center">
-                    <span class="text-[#000000] font-semibold">A</span>
-                </div>
-            </div>
-
-            <!-- Your Messages -->
-            <div class="flex items-start space-x-2">
-                <div class="flex-shrink-0 bg-[#D9D9D9] rounded-full h-8 w-8 flex items-center justify-center">
-                    <span class="text-[#000000] font-semibold">S</span>
-                </div>
-                <div class="bg-[#D4D7D8] p-2 rounded-t-none rounded-r-lg rounded-b-lg rounded-l-lg">
-                    <p class="typing-indicator font-semibold">Stein is writing a message...</p>
-                </div>
-            </div>
+      </div>
+      <div
+        id="chatMessages"
+        class="bg-[#F3F5F7] p-4 flex flex-col space-y-4 overflow-y-auto h-full rounded-3xl pt-5"
+      ></div>
+      <div class="pt-4">
+        <div class="py-4 border-t-4 flex items-center space-x-2">
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Type Your Message...."
+            class="bg-[#F3F5F7] flex-grow px-4 py-2 border rounded-lg focus:outline-none font-semibold"
+          />
         </div>
-
-        <!-- Message Input -->
-        <div class="pt-4">
-            <div class="py-4 border-t-4 flex items-center space-x-2">
-                <input type="text" id="messageInput" placeholder="Type Your Message...." class="bg-[#F3F5F7] flex-grow px-4 py-2 border rounded-lg focus:outline-none font-semibold" />
-            </div>
-            <div class="pb-2 flex justify-between">
-                <button onclick="sendMessage()" class="bg-[#DA314D] text-white px-10 py-2 rounded-lg font-semibold">Send</button>
-                <button class="bg-[#143dd0] text-white px-10 py-2 rounded-lg font-semibold">
-                    <a href="./admin.html">Leave</a>
-                </button>
-            </div>
+        <div class="pb-2 flex justify-between">
+          <button
+            onclick="sendMessage()"
+            class="bg-[#DA314D] text-white px-10 py-2 rounded-lg font-semibold"
+          >
+            Send
+          </button>
+          <button
+            class="bg-[#143dd0] text-white px-10 py-2 rounded-lg font-semibold"
+          >
+            <a href="./admin.html">Leave</a>
+          </button>
         </div>
+      </div>
     </div>
+    <script src="./scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get("userName") || "user";
+        document.getElementById("userNameDisplay").innerText = userName;
 
-    <script src="./scripts.js">
-        document.addEventListener("DOMContentLoaded", function () {
-            const chatMessages = document.getElementById("chatMessages");
-            const messageInput = document.getElementById("messageInput");
-            let typingTimeout;
+        const chatMessages = document.getElementById("chatMessages");
+        const messageInput = document.getElementById("messageInput");
+        let ws;
 
-            function sendMessage() {
-                const message = messageInput.value;
-                if (message.trim() !== "") {
-                    addMessage(message, "user");
-                    messageInput.value = "";
+        function setupWebSocket() {
+          ws = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${userName}/`);
 
-                    // Simulate agent typing
-                    showTypingIndicator();
-                    clearTimeout(typingTimeout);
-                    typingTimeout = setTimeout(() => {
-                        hideTypingIndicator();
-                        addMessage("This is a response from the agent.", "agent");
-                    }, 2000);
-                } else {
-                    alert("Please enter a message.");
-                }
+          ws.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            addMessage(`${data.sender}: ${data.message}`, data.sender);
+            storeMessage(data);
+          };
+
+          ws.onclose = function () {
+            console.error("WebSocket closed unexpectedly");
+          };
+
+          messageInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              sendMessage();
             }
+          });
+        }
 
-            function addMessage(message, sender = "user") {
-                const messageElement = document.createElement("div");
-                const messageContent = document.createElement("div");
-                const avatar = document.createElement("div");
-                const avatarText = document.createElement("span");
+        function sendMessage() {
+          const message = messageInput.value.trim();
+          if (message !== "") {
+            const messageData = { message: message, sender: userName };
+            ws.send(JSON.stringify(messageData));
+            addMessage(`You: ${message}`, "user");
+            storeMessage(messageData);
+            messageInput.value = "";
+          }
+        }
 
-                avatar.classList.add("flex-shrink-0", "bg-[#D9D9D9]", "rounded-full", "h-8", "w-8", "flex", "items-center", "justify-center", "font-semibold", "text-[#000000]");
+        function addMessage(message, sender = "user") {
+          const messageElement = document.createElement("div");
+          messageElement.classList.add(
+            "flex",
+            "items-end",
+            "space-x-2",
+            sender === "user" ? "justify-end" : "justify-start"
+          );
 
-                if (sender === "agent") {
-                    messageElement.classList.add("flex", "items-end", "space-x-2", "justify-end");
-                    messageContent.classList.add("bg-[#DA314D]", "text-[#FFFFFF]", "p-2", "rounded-t-none", "rounded-l-lg", "rounded-b-lg", "rounded-r-lg");
-                    avatarText.textContent = "A";
-                } else if (sender === "user") {
-                    messageElement.classList.add("flex", "items-start", "space-x-2");
-                    messageContent.classList.add("bg-[#E2E8F0]", "text-[#2D2D2D]", "p-2", "rounded-t-none", "rounded-r-lg", "rounded-b-lg", "rounded-l-lg");
-                    avatarText.textContent = "S";
-                } else {
-                    messageElement.classList.add("flex", "items-center", "justify-center");
-                    messageContent.classList.add("bg-[#F3F5F7]", "text-[#2D2D2D]", "p-2", "rounded-md", "text-center", "w-full");
-                    avatarText.textContent = "";
-                }
+          if (sender !== "user") {
+            const avatarElement = document.createElement("div");
+            avatarElement.classList.add(
+              "flex-shrink-0",
+              "bg-[#D9D9D9]",
+              "rounded-full",
+              "h-8",
+              "w-8",
+              "flex",
+              "items-center",
+              "justify-center"
+            );
+            avatarElement.innerHTML = `<span class="text-[#000000] font-semibold">${sender.charAt(
+              0
+            )}</span>`;
+            messageElement.appendChild(avatarElement);
+          }
 
-                messageContent.textContent = message;
-                avatar.appendChild(avatarText);
-                messageElement.appendChild(avatar);
-                messageElement.appendChild(messageContent);
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+          const messageContent = document.createElement("div");
+          messageContent.classList.add(
+            "p-2",
+            "rounded-t-none",
+            sender === "user" ? "rounded-l-lg" : "rounded-r-lg",
+            "rounded-b-lg",
+            sender === "user" ? "bg-[#D4D7D8]" : "bg-[#D4D7D8]"
+          );
+          messageContent.innerHTML = `<p class="font-semibold">${message}</p>`;
 
-            function showTypingIndicator() {
-                const typingIndicator = document.createElement("div");
-                typingIndicator.id = "typing-indicator";
-                typingIndicator.classList.add("p-2", "mb-2", "rounded", "bg-[#F3F5F7]", "text-[#909090]", "self-end", "max-w-xs", "italic");
-                typingIndicator.textContent = "Agent is typing...";
-                chatMessages.appendChild(typingIndicator);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+          messageElement.appendChild(messageContent);
 
-            function hideTypingIndicator() {
-                const typingIndicator = document.getElementById("typing-indicator");
-                if (typingIndicator) {
-                    typingIndicator.remove();
-                }
-            }
+          if (sender === "user") {
+            const avatarElement = document.createElement("div");
+            avatarElement.classList.add(
+              "flex-shrink-0",
+              "bg-[#D9D9D9]",
+              "rounded-full",
+              "h-8",
+              "w-8",
+              "flex",
+              "items-center",
+              "justify-center"
+            );
+            avatarElement.innerHTML = `<span class="text-[#000000] font-semibold">${userName.charAt(
+              0
+            )}</span>`;
+            messageElement.appendChild(avatarElement);
+          }
 
-            window.sendMessage = sendMessage;  // Expose sendMessage function to global scope
-        });
+          chatMessages.appendChild(messageElement);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function storeMessage(messageData) {
+          fetch("http://127.0.0.1:8000/messages/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(messageData),
+          }).catch((error) => {
+            console.error("Error storing message:", error);
+          });
+        }
+
+        function fetchUserInfo() {
+          fetch("http://127.0.0.1:8000/create-room/")
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("userNameDisplay").innerText =
+                data.name || userName;
+              document.getElementById("startedTime").innerText =
+                data.started || "N/A";
+              document.getElementById("status").value =
+                data.status || "waiting";
+              document.getElementById("pageUrl").innerText = data.page || "N/A";
+              document.getElementById("pageUrl").href = data.page || "#";
+              document.getElementById("agentName").innerText =
+                data.agent || "N/A";
+            })
+            .catch((error) => {
+              console.error("Error fetching user info:", error);
+            });
+        }
+
+        function fetchMessages() {
+          fetch("http://127.0.0.1:8000/messages/")
+            .then((response) => response.json())
+            .then((messages) => {
+              messages.forEach((messageData) => {
+                addMessage(
+                  `${messageData.sender}: ${messageData.message}`,
+                  messageData.sender
+                );
+              });
+            })
+            .catch((error) => {
+              console.error("Error fetching messages:", error);
+            });
+        }
+
+        fetchUserInfo();
+        fetchMessages();
+        setupWebSocket();
+      });
     </script>
-</body>
+  </body>
 </html>
